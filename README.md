@@ -21,3 +21,9 @@ https://developers.google.com/+/web/snippet/
 
 ##### Schema.org types
 http://schema.org/docs/schemas.html
+
+## Template Types
+
+Extension provide tmplate type: 'only2', 'minimum', 'standart', 'full'
+
+[Full decription of template types](template-types.md)
