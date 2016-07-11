@@ -48,7 +48,7 @@
 				],
 				[
 					'label'=>'<i class="glyphicon glyphicon-king"></i> Open Graph Tags',
-					'content'=>$this->render( 'open_graph_tags', ['seoform'=> $this->form,'model'=>$model]),
+					'content'=>$this->render( 'open_graph_tags', ['seoform'=> $this->form,'model'=>$model, 'behavior'=>$this->behavior, 'view'=>$this->getView()]),
 					'headerOptions' => []
 				],
 				[
