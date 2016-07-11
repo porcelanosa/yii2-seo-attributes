@@ -1,18 +1,20 @@
+>**WARNING! This package is UNDER DEVELOPMENT**
+
 [![Latest Stable Version](https://poser.pugx.org/porcelanosa/yii2-seo-attributes/v/stable?format=flat-square)](https://packagist.org/packages/porcelanosa/yii2-seo-attributes)
 [![Latest Unstable Version](https://poser.pugx.org/porcelanosa/yii2-seo-attributes/v/unstable?format=flat-square)](https://packagist.org/packages/porcelanosa/yii2-seo-attributes)
 [![Total Downloads](https://poser.pugx.org/porcelanosa/yii2-seo-attributes/downloads?format=flat-square)](https://packagist.org/packages/porcelanosa/yii2-seo-attributes)
-[![License](https://poser.pugx.org/porcelanosa/yii2-seo-attributes/license)](https://packagist.org/packages/porcelanosa/yii2-seo-attributes)
-[![composer.lock](https://poser.pugx.org/porcelanosa/yii2-seo-attributes/composerlock)](https://packagist.org/packages/porcelanosa/yii2-seo-attributes)
+[![License](https://poser.pugx.org/porcelanosa/yii2-seo-attributes/license?format=flat-square)](https://packagist.org/packages/porcelanosa/yii2-seo-attributes)
+[![composer.lock](https://poser.pugx.org/porcelanosa/yii2-seo-attributes/composerlock?format=flat-square)](https://packagist.org/packages/porcelanosa/yii2-seo-attributes)
 
 # yii2-seo-attributes
 Yii2 extensions for adding seo attributes, like a  title, meta-keys, meta-descr and other, in entity
 ##Installition
 ```php
-composer require porcelanosa/yii2-related
+composer require porcelanosa/yii2-seo-attributes
 ```
 Run migration
 ```bash
-$ php yii migrate/up --migrationPath=@vendor/porcelanosa/yii2-related/migrations
+$ php yii migrate/up --migrationPath=@vendor/porcelanosa/yii2-seo-attributes/migrations
 ```
 In model class add behavior 
 ```php
