@@ -28,6 +28,7 @@
 		public function events() {
 			return [
 				ActiveRecord::EVENT_BEFORE_UPDATE => 'saveSeo',
+				ActiveRecord::EVENT_BEFORE_DELETE => 'deleteImg',
 			];
 		}
 		
@@ -36,6 +37,7 @@
 		 * @return boolean
 		 */
 		public function saveSeo() {
+			//$this->uploadPath = Yii::getAlias($this->uploadPath);
 			if ( ! is_dir( $this->uploadPath ) ) {
 				mkdir( $this->uploadPath, 0777, true );
 				//var_dump($this->uploadPath);
@@ -52,11 +54,10 @@
 					
 					if ( $image ) {
 						// store the source file name
-						//$seo->og_image = $image->name;
-						$ext = end( ( explode( ".", $image->name ) ) );
+						$filename =  basename($image->name, ".{$image->extension}" );
 						
 						// generate a unique file name
-						$seo->og_image = Yii::$app->security->generateRandomString() . ".{$ext}";
+						$seo->og_image = "{$filename}-".Yii::$app->security->generateRandomString(8) . ".{$image->extension}";
 						
 						// the path to save file, you can set an uploadPath
 						$path = $this->uploadPath . $seo->og_image;
@@ -125,19 +126,7 @@
 			return preg_replace( $pattern, '', $namespace );
 		}
 		
-		
-		/***/
-		public function delImage($id, $img_attr = 'og_image') {
-			$seo_model = SeoAttributes::findOne($id);
-			$img_path = FileHelper::normalizePath(Yii::getAlias($this->uploadPath).$seo_model->$img_attr);
-			$seo_model->$img_attr = '';
-			if($seo_model->save($img_attr)) {
-				try{
-					unlink($img_path);
-				}
-				catch(\Exception $e) {
-					throw FileNotFoundException::class;
-				}
-			}
+		public function deleteImg(){
+			
 		}
 	}

@@ -11,7 +11,7 @@
 	use \app\components\helpers\MyHelper;
 	use \app\components\helpers\ThumbHelper;
 	use yii\helpers\Html;
-	
+	use yii\helpers\Url;
 	$path = $behavior->uploadPath;
 ?>
 
@@ -20,8 +20,12 @@
 <?=$seoform->field( $model, 'og_description' )->textInput()?>
 <?=$seoform->field( $model, 'og_type' )?>
 <?=$seoform->field( $model, 'og_url' )?>
-	<? $img_path = Yii::getAlias($path.$model->og_image);?>
+	<? $img_path = $path.$model->og_image;?>
+<?=Html::img($img_path) ;?>
+	
 	<? if(MyHelper::IFF($img_path)):?>
+		<? $url = Url::to(['seo/delimage'])?>
+		<?= $img_path ;?>
 		<?= ThumbHelper::thumbnailImg($img_path, 200, 100)?>
 		<h5><a href="#" id="del-<?=$model->id?>">Удалить</a> </h5>
 		<?
@@ -29,7 +33,15 @@
 			$(document).ready(function() {
 			  $('#del-$model->id').on('click', function(e) {
 			      e.preventDefault();
-			      console.log($(this).attr('id'))
+			      $.ajax({
+			          type: "POST",
+			          data: { 'id':$model->id, 'img_attr' : 'og_image'},
+			          dataType: "json",
+			          url: "/seo/default/delimage",
+			          success: function(data) {
+			            
+			          }
+			      })
 			       return false;
 			  })
 			})

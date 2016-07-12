@@ -17,6 +17,7 @@
 		public $model;
 		public $form;
 		public $model_name = '';
+		public $templateType = '';
 		
 		/** @var string */
 		public $behaviorName;
@@ -35,29 +36,56 @@
 		/** Render widget */
 		public function run() {
 			$model = $this->behavior->getSeo()?$this->behavior->getSeo():new SeoAttributes();
-			$items = [
-				[
-					'label'=>'<i class="glyphicon glyphicon-home"></i> Main',
-					'content'=>$this->render( 'main', ['seoform'=> $this->form,'model'=>$model] ),
-					'active'=>true
-				],
-				[
-					'label'=>'<i class="glyphicon glyphicon-king"></i> Schema.org',
-					'content'=>$this->render( 'schema_org', ['seoform'=> $this->form,'model'=>$model]),
-					'headerOptions' => []
-				],
-				[
-					'label'=>'<i class="glyphicon glyphicon-king"></i> Open Graph Tags',
-					'content'=>$this->render( 'open_graph_tags', ['seoform'=> $this->form,'model'=>$model, 'behavior'=>$this->behavior, 'view'=>$this->getView()]),
-					'headerOptions' => []
-				],
-				[
-					'label'=>'<i class="glyphicon glyphicon-king"></i> Twitter',
-					'content'=>$this->render( 'twitter_card', ['seoform'=> $this->form,'model'=>$model]),
-					'headerOptions' => []
-				],
-			];
-		
+			if($this->templateType == 'minimum-minimorum') {
+				$items = [
+					[
+						'label'   => '<i class="glyphicon glyphicon-home"></i> Main',
+						'content' => $this->render( 'main', [ 'seoform' => $this->form, 'model' => $model ] ),
+						'active'  => true
+					]
+				];
+			}
+			else {
+				$items = [
+					[
+						'label'   => '<i class="glyphicon glyphicon-home"></i> Main',
+						'content' => $this->render( 'main', [ 'seoform' => $this->form, 'model' => $model ] ),
+						'active'  => true
+					],
+					[
+						'label'         => '<i class="glyphicon glyphicon-king"></i> Schema.org',
+						'content'       => $this->render(
+							'schema_org', [
+							'seoform' => $this->form,
+							'model'   => $model
+						]
+						),
+						'headerOptions' => [ ]
+					],
+					[
+						'label'         => '<i class="glyphicon glyphicon-king"></i> Open Graph Tags',
+						'content'       => $this->render(
+							'open_graph_tags', [
+							'seoform'  => $this->form,
+							'model'    => $model,
+							'behavior' => $this->behavior,
+							'view'     => $this->getView()
+						]
+						),
+						'headerOptions' => [ ]
+					],
+					[
+						'label'         => '<i class="glyphicon glyphicon-king"></i> Twitter',
+						'content'       => $this->render(
+							'twitter_card', [
+							'seoform' => $this->form,
+							'model'   => $model
+						]
+						),
+						'headerOptions' => [ ]
+					],
+				];
+			}
 		
 			echo TabsX::widget([
 				'items'=>$items,
