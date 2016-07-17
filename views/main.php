@@ -8,6 +8,5 @@
 	/* @var $seoform ActiveForm */
 ?>
 
-<?=$seoform->field( $model, 'meta_descr' )->textInput()?>
-
 <?=$seoform->field( $model, 'title' )?>
+<?=$seoform->field( $model, 'meta_descr' )->textInput()?>
