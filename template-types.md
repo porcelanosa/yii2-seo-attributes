@@ -1,11 +1,12 @@
 # Template Types
 
 
-**only2**: _title_ and _meta-description_ only
+**minimum-minimorum**: _title_ and _meta-description_ only
 
 **minimum**:
->
-```html <!-- Place this data between the <head> tags of your website -->
+
+```html 
+<!-- Place this data between the <head> tags of your website -->
  <title>Page Title. Maximum length 60-70 characters</title>
  <meta name="description" content="Page description. No longer than 155 characters." />
  
