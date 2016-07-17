@@ -20,7 +20,7 @@ In model class add behavior
 ```php
 'seoBehavior' => [
     'class' => SeoBehavior::className(),
-    'model_name' => MyHelper::modelFromNamespace($this::className()),
+    'model_name' => $this::className(),
     'uploadPath' =>'@web/uploads/seoimage/'
 ],
 ```
@@ -36,6 +36,16 @@ In config add module
 ]
 ```
 
+In admin view
+```php
+echo \porcelanosa\yii2seo\SeoWidget::widget(
+    [
+        'model'        => $model,
+        'form'         => $form,
+        'behaviorName' => 'seoBehavior',
+        'templateType' => 'minimum-minimorum' // 'minimal', 'standart', 'full'
+    ] );
+```
 ##Usage
 
 ```php

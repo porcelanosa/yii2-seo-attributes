@@ -14,8 +14,7 @@
 	/**
 	 *
 	 **/
-	class SeoBehavior
-		extends AttributeBehavior {
+	class SeoBehavior extends AttributeBehavior {
 		
 		public $model_name = '';
 		public $itemscope = '';
@@ -38,7 +37,7 @@
 		 */
 		public function saveSeo() {
 			//$this->uploadPath = Yii::getAlias($this->uploadPath);
-			if ( ! is_dir( $this->uploadPath ) ) {
+			if ( ! is_dir( $this->uploadPath ) and $this->uploadPath != '' ) {
 				mkdir( $this->uploadPath, 0777, true );
 				//var_dump($this->uploadPath);
 			}
@@ -54,10 +53,10 @@
 					
 					if ( $image ) {
 						// store the source file name
-						$filename =  basename($image->name, ".{$image->extension}" );
+						$filename = basename( $image->name, ".{$image->extension}" );
 						
 						// generate a unique file name
-						$seo->og_image = "{$filename}-".Yii::$app->security->generateRandomString(8) . ".{$image->extension}";
+						$seo->og_image = "{$filename}-" . Yii::$app->security->generateRandomString( 8 ) . ".{$image->extension}";
 						
 						// the path to save file, you can set an uploadPath
 						$path = $this->uploadPath . $seo->og_image;
@@ -126,7 +125,7 @@
 			return preg_replace( $pattern, '', $namespace );
 		}
 		
-		public function deleteImg(){
+		public function deleteImg() {
 			
 		}
 	}
