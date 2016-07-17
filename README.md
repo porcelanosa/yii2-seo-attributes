@@ -60,7 +60,7 @@ $this->registerMetaTag([
     'content' => $model->seo->meta_descr]
 );
 ```
-![Screen shot](http://take.ms/XkIkl)
+![Screen shot](https://d1ro8r1rbfn3jf.cloudfront.net/ms_98568/gDS5xprqnmn1SeTdzsQgNSMkNHVaQ6/Developer%2BTools%2B-%2Bhttp___plex.local_admin_cats_update_1%2B2016-07-17%2B17.51.35.jpg)
 ##Social meta tags
 Examples of using
 
