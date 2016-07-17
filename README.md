@@ -36,6 +36,21 @@ In config add module
 ]
 ```
 
+##Usage
+
+```php
+$this->title = $model->seo->title;
+```
+
+or meta-tag
+
+```php
+$this->registerMetaTag([
+    'name' => 'description',
+    'content' => $model->seo->meta_descr]
+);
+```
+![Screen shot](http://take.ms/XkIkl)
 ##Social meta tags
 Examples of using
 
